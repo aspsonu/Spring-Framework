@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- The below bean is used for setter injection -->
+<bean id="student" class="com.dsp.spring.DependencyInjection.Student">
+	<property name="studentName" value="Sai Pranith"></property>
+	<property name="id" value="406" />
+</bean>
+
+<bean id="xyz" class="com.dsp.spring.DependencyInjection.Student">
+	<property name="studentName" value="Arun"></property>
+	<property name="id" value="15" />
+</bean>
+
+<!-- Using constructor injection -->
+<bean id="name" class="com.dsp.spring.DependencyInjection.Student">
+	<constructor-arg name="studentName" value="Sri Harsha" type="java.lang.String"></constructor-arg>
+	<constructor-arg name="id" value="10" type="int"/>
+</bean>
+
+<bean id="abc" class="com.dsp.spring.DependencyInjection.Student">
+	<constructor-arg name="id" value="100" type="int"/>
+</bean>
+
+<!-- Dependency Injection for object's -->
+
+<!--
+<bean id="stud" class="com.dsp.spring.ObjectDI.Student">
+	<property name="id" value="100"></property>
+	<property name="mathCheat">
+		<bean class="com.dsp.spring.ObjectDI.MathCheat"></bean>
+	</property>
+</bean>
+
+<bean id="anotherStudent" class="com.dsp.spring.ObjectDI.AnotherStudent">
+	<property name="cheat">
+		<bean class="com.dsp.spring.ObjectDI.MathCheat"></bean>
+	</property>
+</bean>
+-->
+
+<!-- In the above two beans there is same inner bean and when we are having the 
+same beans then we can just create a seperate bean with an id and just refer the id where ever necessary -->
+
+<!-- Standard way of doing the above -->
+
+<bean id="mathCheatObjectValue" class="com.dsp.spring.ObjectDI.MathCheat"></bean>
+
+<bean id="stud" class="com.dsp.spring.ObjectDI.Student">
+	<property name="id" value="100"></property>
+	<property name="mathCheat" ref="mathCheatObjectValue"></property>
+</bean>
+
+<bean id="anotherStudent" class="com.dsp.spring.ObjectDI.AnotherStudent">
+	<property name="cheat" ref="mathCheatObjectValue" />
+</bean>
+
+</beans>
