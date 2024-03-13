@@ -39,5 +39,3 @@ Constructor Injection :
 Here in constructor-arg tag of name field the studentName is exactly same as the parameter or argument of the constructor
 
 Mentioning the type decreases the execution time ( This is completely optional and spring itself checks for the type if not mentioned )
-
-
